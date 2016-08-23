@@ -1,37 +1,32 @@
-/*
-	GRID
-	-matrix[][];
-
- */
-
-var ships = function(){
-
-}
-
-var player = function(spec){
-	var playerObj = {};
-	
-	var ammo = (spec && spec.ammo) || 20; // handle defaults
-	var hits = 0;
-	var misses = 0;
-
-	playerObj.prototype.shoot = function(x,y){
-
-	};
-
-	return playerObj 
-}
-
 var game = function (){
 	var player = player({ammo:25});
 
-	var grid = 
+	var grid = grid();
+
+	var Ships = [];
 
 	return {
-
-		init: function(){
-			pl
+		init: function(){		
+			Ships;
 		}
+	}
+};
 
+var gridSize = 10;
+
+var matrix = [];
+
+//populate matrix with 0
+for(let x = 0; x < gridSize ; x++){
+	matrix[x] = new Array(gridSize);
+	for(let y = 0; y < gridSize ; y++){
+		matrix[x][y] = 0;
 	}
 }
+
+matrix[9][9] = 1;
+function checkMat(x,y){
+	return matrix[x] && matrix[x][y];
+}
+
+console.log(matrix);

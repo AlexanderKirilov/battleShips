@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css?family=Slabo+27px");
+body, html {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #dfeef0; }
+
+#UIBar {
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0 0 10px;
+  margin-bottom: 4em;
+  border-radius: 0 0 6px 6px;
+  font-family: 'Space Mono', monospace;
+  position: relative; }
+  #UIBar:before, #UIBar:after {
+    content: " ";
+    display: table; }
+  #UIBar:after {
+    clear: both; }
+  @media (min-width: 768px) {
+    #UIBar {
+      width: 720px; } }
+  @media (min-width: 992px) {
+    #UIBar {
+      width: 940px; } }
+  @media (min-width: 1200px) {
+    #UIBar {
+      width: 1140px; } }
+  #UIBar section {
+    position: relative;
+    width: 33%;
+    float: left;
+    max-height: 4.5em;
+    font-family: 'Slabo 27px', serif;
+    min-height: 1px; }
+  #UIBar #shipUIContainer {
+    position: relative;
+    width: 100%; }
+    #UIBar #shipUIContainer .shipUIRow {
+      position: relative;
+      width: 100%;
+      float: left;
+      padding: 3px 24px; }
+    #UIBar #shipUIContainer .shipHead {
+      display: inline-block;
+      position: relative;
+      float: left;
+      background: #ccd9ff;
+      -webkit-border-top-left-radius: 6px;
+      -moz-border-radius-topleft: 6px;
+      border-top-left-radius: 6px;
+      -webkit-border-bottom-left-radius: 6px;
+      -moz-border-radius-bottomleft: 6px;
+      border-bottom-left-radius: 6px;
+      margin-right: 4px;
+      height: 14px;
+      width: 16px; }
+      #UIBar #shipUIContainer .shipHead:before, #UIBar #shipUIContainer .shipHead:after {
+        content: '';
+        position: absolute;
+        left: 12px;
+        border-right: 8px solid transparent;
+        border-bottom: 7px solid #ccd9ff;
+        border-top: 7px solid #ccd9ff; }
+    #UIBar #shipUIContainer .shipMiddle {
+      display: inline-block;
+      position: relative;
+      float: left;
+      background: #ccd9ff;
+      top: 1px;
+      width: 22px;
+      height: 12px;
+      border-radius: 3px;
+      margin: 0 2px; }
+    #UIBar #shipUIContainer .shipTail {
+      display: inline-block;
+      position: relative;
+      float: left;
+      background: #ccd9ff;
+      top: 3px;
+      margin-left: 4px;
+      width: 16px;
+      height: 7px; }
+      #UIBar #shipUIContainer .shipTail:after {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: -4px;
+        border-left: 4px solid transparent;
+        border-right: 16px solid #ccd9ff;
+        border-top: 3.5px solid #ccd9ff; }
+      #UIBar #shipUIContainer .shipTail:before {
+        content: "";
+        position: absolute;
+        bottom: -3.5px;
+        left: -4px;
+        border-left: 4px solid transparent;
+        border-right: 16px solid #ccd9ff;
+        border-bottom: 4px solid #ccd9ff; }
+    #UIBar #shipUIContainer .shipPartHit {
+      background-color: red; }
+      #UIBar #shipUIContainer .shipPartHit:before, #UIBar #shipUIContainer .shipPartHit:after {
+        background-color: red; }
+  #UIBar .logoCenter {
+    display: flex;
+    justify-content: center; }
+    #UIBar .logoCenter img {
+      width: 4.5em;
+      height: 4.5em;
+      transform: translateY(33%); }
+
+main {
+  display: flex;
+  justify-content: center;
+  align-content: center; }
+
+#gridContainer {
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  -webkit-transform: rotateX(45deg) rotateZ(45deg);
+  transform: rotateX(60deg) rotateZ(45deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
+.Tile, .TileHit, .TileHitShip {
+  display: inline-block;
+  background: url("../images/waterTile.png");
+  background-color: #b6ebf0;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  -webkit-transition: background-color 750ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: background-color 750ms cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+
+.TileHit {
+  background: none;
+  background-color: rgba(0, 0, 0, 0.75); }
+
+.TileHitShip {
+  background: none;
+  background-color: rgba(148, 0, 40, 0.9); }
+
+/*# sourceMappingURL=index.css.map */

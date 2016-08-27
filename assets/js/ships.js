@@ -1,62 +1,75 @@
 /**
  * constructor function for Ship object
- * DO NOT USE new
- * 
- * @param  {specObject} spec 
- * @return {Ship}      ship object
  */
-var shipConstruct = function(spec){
-	/*
-		get constructor specifications
-	 */
-	var shipSize = (spec && spec.size) || 3;
-	//var grid = spec && spec.grid;
-	
-	// default horizontal
-	// true for vertical
-	var vertical = (spec && spec.vertical) || 0;
-	
-	//TODO: make these random;
-	var x = (spec && spec.x) || 0;
-	var y = (spec && spec.y) || 0;
+var Ship = function(shipSize){
 
-	/*
-		construct Ship
-	 */
-	var cells = [];
+	var shipSize = shipSize;
+
+	this.observers = new ObserverList();
+
+	/*  	construct Ship 		*/
+	this.cells = [];
 
 	for(let j = 0;j < shipSize; j++){
-		cells.push({
-			x: x,
-			y: y,
+		this.cells.push({
 			isHit: false
 		});
-
-		vertical ? y++ : x++;
 	}
-	
-	/*
-		Prepare object
-	 */
 
-	var shipObj = {
-		isShot: function(){
-			var isShot = true;
-			for(let j = 0; j < shipSize; j++){
-				isShot = cells[j].isHit ? true : false; 
-			}
-
-			return isShot;
-		}
-
-		getSize: function(){
-			return shipSize;
-		}
+	this.getSize = function(){
+		return shipSize;
 	};
-
-	return shipObj;
 };
 
-var testShip = shipConstruct();
+Ship.prototype.isSank = function(){
+	var isShot = true;
+	for(let j = 0; j < this.getSize(); j++){
+		if(!this.cells[j].isHit){
+			isShot = false;
+		}
+	}
+	return isShot;
+};
 
-console.log(testShip.isShot());
+Ship.prototype.hitCell = function(cellIndex){
+	this.cells[cellIndex].isHit = true;
+
+	this.notifyOnHit(cellIndex);
+};
+
+Ship.prototype.addUIObserver = function(observer){
+	this.observers.add( observer );
+	observer.registerShipForObserving(this);
+};
+
+Ship.prototype.removeObserver = function(observer){
+	this.observers.removeAt(this.observers.indexOf(observer,0));
+};
+
+Ship.prototype.notifyOnHit = function(gridCellIndex){
+	var observerCount = this.observers.count();
+	for(var i=0;i < observerCount; i++){
+		this.observers.get(i).update(gridCellIndex,this);
+	}
+};
+
+/*
+	//Build UI
+	this.shipUIFragment = document.createDocumentFragment();
+
+	var shipUIContainer = document.createElement('div');
+	shipUIContainer.width = '100%';
+	for(var k = 0;k < shipSize;k++){
+		let shipPart = document.createElement('div');
+		if(k === 0){
+			shipPart.className = 'shipHead';
+		}else if(k === shipSize-1){
+			shipPart.className = 'shipEnd';
+		}else{
+			shipPart.className = 'shipMiddle';
+		}
+		shipUIContainer.appendChild(shipPart);
+	}
+
+	this.shipUIFragment.appendChild(shipUIContainer);
+ */

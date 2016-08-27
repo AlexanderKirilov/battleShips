@@ -1,0 +1,102 @@
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin container-fixed($gutter: $grid-gutter-width) {
+  margin-right: auto;
+  margin-left: auto;
+  @include clearfix;
+}
+
+
+@mixin shipHead($width:46px, $height:40px, $color: $shipUIColor, $borderRadius: 6px){
+	display:inline-block;
+	position: relative;
+	float:left;
+
+	background: $color;
+
+	-webkit-border-top-left-radius: $borderRadius;
+	   -moz-border-radius-topleft: $borderRadius;
+		border-top-left-radius: $borderRadius;
+	-webkit-border-bottom-left-radius: $borderRadius;
+	   -moz-border-radius-bottomleft: $borderRadius;
+		border-bottom-left-radius: $borderRadius;
+	
+	margin-right:$width/4;
+	
+	height: $height;
+	width: $width;
+
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		
+		left:($width/4)*3;
+		
+		border-right: $width/2 solid transparent;
+		border-bottom: floor($height/2) solid $color ;
+		border-top: ceil($height/2) solid $color;
+	}
+}
+
+@mixin shipTail($width:120px, $height:100px, $color: $shipUIColor){
+
+	display:inline-block;
+	position: relative;
+	float:left;
+	
+	background: $color;
+
+	top:floor($height/4);
+	margin-left:ceil($width/4);
+	
+	width:$width;
+	height:ceil($height/2);
+	
+	&:after {
+		content: "";
+		position: absolute;
+		
+		top: ceil(-$height/4);
+		left: ceil(-$width/4);
+		
+		border-left: $width/4 solid transparent;
+		border-right: $width solid $color;
+		border-top: $height/4 solid $color;
+	}
+	&:before {
+	    content: "";
+	    position: absolute;
+	    
+	    bottom: -$height/4;
+	    left: ceil(-$width/4);
+	    
+	    border-left: $width/4 solid transparent;
+	    border-right: $width solid $color;
+	    border-bottom: ceil($height/4) solid $color;
+	}
+}
+@mixin shipMiddle($width:120px, $height:100px, $color: $shipUIColor){	
+	display:inline-block;
+	position: relative;
+	float:left;
+	
+	background: $color;
+
+	top:floor($height/5)/2;
+
+	width:floor(($width/2)*3  - $width/10);
+	height:ceil($height/5)*4;
+
+	border-radius:3px;
+	margin: 0 ceil($width/8);
+}

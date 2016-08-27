@@ -2,11 +2,44 @@
 <html>
 <head>
 	<title>battleShip</title>
+	<link rel="stylesheet" href="assets/stylesheets/index.css">
 </head>
 <body>
+	<header id="UIBar">
+		<section>
+			<div id="ammoUIContainer"></div>
+		</section>
+		
+		<section class="logoCenter">
 
+			<div class="logoContainer">
+			</div>
+				<img src="assets/images/logo.png" alt="logo">
+		</section>
+		<section>
+			<div id="shipUIContainer"></div>
+		</section>
+	</header>
+	<main>
+		<div id="gridContainer">
+			
+		</div>
+	</main>
 
-
-<script src="assets/js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/js/variables.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="assets/js/UIObservers/uiObserver_base.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/js/UIObservers/UIShipObserver.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="assets/js/grid.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/js/ships.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/js/player.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="assets/js/game.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function(){
+			game.execute();
+		})
+	</script>
 </body>
 </html>
